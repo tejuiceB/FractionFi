@@ -1,6 +1,6 @@
 # Tokenized Bond Liquidity Platform — Architecture Diagrams
 
-This README captures the architecture of the platform described (Next.js + FastAPI + PostgreSQL + Ethereum + AI/ML + DPI). Diagrams are rendered with Mermaid on GitHub.
+captures the architecture of the platform described (Next.js + FastAPI + PostgreSQL + Ethereum + AI/ML + DPI). Diagrams are rendered with Mermaid on GitHub.
 
 
 ## High‑level system overview
@@ -367,10 +367,3 @@ sequenceDiagram
   API-->>Buyer: WS: portfolio updated
   API-->>Seller: WS: portfolio updated
 ```
-
-
-## Notes
-
-- GitHub renders Mermaid diagrams automatically. If viewing elsewhere, use a Mermaid-compatible renderer.
-- The diagrams map exactly to the SRS/architecture text: components, data flows, contracts, ERD, deployment, and security.
-- Adapt service names or add nodes (e.g., CDN, API Gateway) as your deployment evolves.
