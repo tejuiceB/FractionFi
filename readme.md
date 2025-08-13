@@ -27,7 +27,162 @@ mindmap
       Delayed market information
 ```
 
-## 💡 Solution Overview
+## � Platform Flow Diagrams
+
+### User Onboarding & KYC Flow
+
+```mermaid
+flowchart TD
+    A[User Registration] --> B{Email Verification}
+    B -->|Success| C[Wallet Connection]
+    B -->|Failed| A
+    
+    C --> D[KYC Initiation]
+    D --> E[DigiLocker Integration]
+    E --> F{Document Verification}
+    F -->|Success| G[Account Aggregator Consent]
+    F -->|Failed| H[Manual Document Upload]
+    
+    G --> I[Financial Data Verification]
+    H --> I
+    I --> J{Risk Assessment}
+    J -->|Low Risk| K[Account Approved]
+    J -->|Medium Risk| L[Additional Verification]
+    J -->|High Risk| M[Account Rejected]
+    
+    L --> N{Enhanced KYC}
+    N -->|Pass| K
+    N -->|Fail| M
+    
+    K --> O[Create Demo Portfolio]
+    O --> P[Platform Access Granted]
+    
+    style A fill:#e3f2fd
+    style K fill:#e8f5e8
+    style M fill:#ffebee
+    style P fill:#f3e5f5
+```
+
+### Bond Tokenization Flow
+
+```mermaid
+flowchart LR
+    subgraph "Issuer Side"
+        A[Bond Issuance] --> B[Legal Documentation]
+        B --> C[SEBI Approval]
+        C --> D[Smart Contract Deployment]
+    end
+    
+    subgraph "Platform Processing"
+        D --> E[Token Minting]
+        E --> F[Metadata Assignment]
+        F --> G[Fractional Units Creation]
+        G --> H[Liquidity Pool Setup]
+    end
+    
+    subgraph "Market Ready"
+        H --> I[Order Book Creation]
+        I --> J[Market Making Bots]
+        J --> K[Trading Launch]
+    end
+    
+    subgraph "Ongoing Operations"
+        K --> L[Coupon Distribution]
+        L --> M[Maturity Settlement]
+        M --> N[Token Burn]
+    end
+    
+    style A fill:#fff3e0
+    style K fill:#e8f5e8
+    style N fill:#ffebee
+```
+
+### Trading Workflow
+
+```mermaid
+flowchart TD
+    A[User Places Order] --> B{Order Validation}
+    B -->|Invalid| C[Reject Order]
+    B -->|Valid| D[Check User Balance]
+    
+    D --> E{Sufficient Balance?}
+    E -->|No| F[Insufficient Funds Error]
+    E -->|Yes| G[Insert Order to Database]
+    
+    G --> H[Trigger Matching Engine]
+    H --> I{Matching Orders Found?}
+    I -->|No| J[Order in Queue]
+    I -->|Yes| K[Create Trade Record]
+    
+    K --> L{Settlement Type}
+    L -->|On-Chain| M[Smart Contract Call]
+    L -->|Off-Chain| N[Update Holdings]
+    
+    M --> O[Blockchain Transaction]
+    O --> P{Transaction Success?}
+    P -->|Yes| Q[Update Holdings]
+    P -->|No| R[Rollback Trade]
+    
+    N --> S[Notify via WebSocket]
+    Q --> S
+    J --> T[WebSocket Orderbook Update]
+    
+    S --> U[Update Portfolio]
+    T --> U
+    R --> V[Error Notification]
+    
+    style A fill:#e3f2fd
+    style S fill:#e8f5e8
+    style V fill:#ffebee
+    style U fill:#f3e5f5
+```
+
+### AI/ML Processing Flow
+
+```mermaid
+flowchart TB
+    subgraph "Data Ingestion"
+        A[Market Data] --> D[Data Pipeline]
+        B[User Behavior] --> D
+        C[External APIs] --> D
+    end
+    
+    subgraph "AI Processing"
+        D --> E[Data Preprocessing]
+        E --> F[Feature Engineering]
+        F --> G{Model Selection}
+        
+        G --> H[Price Prediction Model]
+        G --> I[Risk Assessment Model]
+        G --> J[Fraud Detection Model]
+        G --> K[Recommendation Engine]
+    end
+    
+    subgraph "Real-time Processing"
+        H --> L[Real-time Pricing]
+        I --> M[Risk Scoring]
+        J --> N[Anomaly Detection]
+        K --> O[Personalized Recommendations]
+    end
+    
+    subgraph "Actions"
+        L --> P[Update Bond Prices]
+        M --> Q[Adjust User Limits]
+        N --> R[Security Alerts]
+        O --> S[UI Personalization]
+    end
+    
+    P --> T[WebSocket Broadcast]
+    Q --> T
+    R --> U[Admin Dashboard]
+    S --> V[User Interface]
+    
+    style D fill:#e3f2fd
+    style G fill:#fff3e0
+    style T fill:#e8f5e8
+```
+
+## �💡 Solution Overview
 
 ```mermaid
 graph LR
@@ -48,6 +203,127 @@ graph LR
     L --> M[Wider Access]
 ```
 
+
+### Portfolio Management Flow
+
+```mermaid
+flowchart TD
+    A[User Login] --> B[Fetch Portfolio Data]
+    B --> C[Calculate Holdings Value]
+    C --> D[Get Trade History]
+    D --> E[Compute Performance Metrics]
+    
+    E --> F{Real-time Updates}
+    F --> G[WebSocket Connection]
+    G --> H[Market Data Stream]
+    H --> I[Price Updates]
+    I --> J[Recalculate Portfolio Value]
+    
+    J --> K[Update UI Components]
+    K --> L{User Actions}
+    
+    L --> M[View Detailed Holdings]
+    L --> N[Generate Reports]
+    L --> O[Rebalance Portfolio]
+    L --> P[Set Price Alerts]
+    
+    M --> Q[Bond Detail View]
+    N --> R[PDF Report Generation]
+    O --> S[Automated Trading]
+    P --> T[Notification Service]
+    
+    style A fill:#e3f2fd
+    style K fill:#e8f5e8
+    style R fill:#fff3e0
+    style T fill:#f3e5f5
+```
+
+### Error Handling & Recovery Flow
+
+```mermaid
+flowchart TD
+    A[System Error Detected] --> B{Error Type}
+    
+    B --> C[Network Error]
+    B --> D[Database Error]
+    B --> E[Blockchain Error]
+    B --> F[Business Logic Error]
+    
+    C --> G[Retry with Exponential Backoff]
+    D --> H[Database Failover]
+    E --> I[Rollback Transaction]
+    F --> J[Validation Error Response]
+    
+    G --> K{Retry Success?}
+    K -->|Yes| L[Continue Processing]
+    K -->|No| M[Circuit Breaker]
+    
+    H --> N{Failover Success?}
+    N -->|Yes| L
+    N -->|No| O[Emergency Mode]
+    
+    I --> P[Notify Admin]
+    J --> Q[User Error Message]
+    
+    M --> R[Alert Operations Team]
+    O --> R
+    P --> R
+    
+    R --> S[Incident Response]
+    S --> T[Root Cause Analysis]
+    T --> U[System Recovery]
+    
+    style A fill:#ffebee
+    style L fill:#e8f5e8
+    style O fill:#ff5722,color:#fff
+    style S fill:#ff9800,color:#fff
+```
+
+### Compliance & Audit Flow
+
+```mermaid
+flowchart LR
+    subgraph "Data Collection"
+        A[Transaction Data]
+        B[User Actions]
+        C[System Events]
+        D[API Calls]
+    end
+    
+    subgraph "Processing"
+        A --> E[Audit Log Service]
+        B --> E
+        C --> E
+        D --> E
+        
+        E --> F[Data Enrichment]
+        F --> G[Compliance Rules Engine]
+    end
+    
+    subgraph "Analysis"
+        G --> H{Suspicious Activity?}
+        H -->|Yes| I[Generate Alert]
+        H -->|No| J[Normal Processing]
+        
+        I --> K[STR Generation]
+        K --> L[Regulatory Reporting]
+    end
+    
+    subgraph "Storage"
+        J --> M[(Audit Database)]
+        L --> M
+        M --> N[Long-term Archive]
+    end
+    
+    subgraph "Reporting"
+        M --> O[Compliance Dashboard]
+        O --> P[Regulatory Reports]
+        P --> Q[SEBI Submission]
+    end
+    
+    style I fill:#ff5722,color:#fff
+    style Q fill:#4caf50,color:#fff
+```
 
 ## 🏗️ Technology Architecture
 
