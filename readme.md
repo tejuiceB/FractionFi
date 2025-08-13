@@ -325,6 +325,146 @@ flowchart LR
     style Q fill:#4caf50,color:#fff
 ```
 
+### WebSocket Real-time Communication Flow
+
+```mermaid
+flowchart LR
+    subgraph "Client Side"
+        A[User Browser]
+        B[WebSocket Connection]
+        C[Event Handlers]
+        D[UI Components]
+    end
+    
+    subgraph "Server Side"
+        E[WebSocket Manager]
+        F[Connection Pool]
+        G[Event Dispatcher]
+        H[Message Queue]
+    end
+    
+    subgraph "Data Sources"
+        I[Order Book Updates]
+        J[Trade Executions]
+        K[Portfolio Changes]
+        L[Market Data Feed]
+    end
+    
+    subgraph "Processing"
+        M[User Subscription Filter]
+        N[Data Transformation]
+        O[Rate Limiting]
+        P[Message Validation]
+    end
+    
+    A --> B
+    B --> E
+    E --> F
+    F --> G
+    
+    I --> H
+    J --> H
+    K --> H
+    L --> H
+    
+    H --> M
+    M --> N
+    N --> O
+    O --> P
+    P --> G
+    
+    G --> E
+    E --> B
+    B --> C
+    C --> D
+    
+    style B fill:#2196f3,color:#fff
+    style H fill:#ff9800,color:#fff
+    style P fill:#4caf50,color:#fff
+```
+
+### Data Processing Pipeline Flow
+
+```mermaid
+flowchart TB
+    subgraph "External Data Sources"
+        A[Market Data APIs]
+        B[DigiLocker]
+        C[Account Aggregator]
+        D[Blockchain Events]
+        E[Credit Rating APIs]
+    end
+    
+    subgraph "Ingestion Layer"
+        F[API Gateway]
+        G[WebSocket Handlers]
+        H[Event Listeners]
+        I[Batch Processors]
+    end
+    
+    subgraph "Stream Processing"
+        J[Apache Kafka]
+        K[Data Validation]
+        L[Transformation Engine]
+        M[Enrichment Service]
+    end
+    
+    subgraph "AI/ML Pipeline"
+        N[Feature Engineering]
+        O[Model Inference]
+        P[Anomaly Detection]
+        Q[Prediction Engine]
+    end
+    
+    subgraph "Storage & Cache"
+        R[(PostgreSQL)]
+        S[(Redis Cache)]
+        T[(Data Warehouse)]
+        U[(Document Store)]
+    end
+    
+    subgraph "Output Services"
+        V[REST APIs]
+        W[WebSocket Broadcast]
+        X[Notification Service]
+        Y[Report Generator]
+    end
+    
+    A --> F
+    B --> F
+    C --> F
+    D --> H
+    E --> I
+    
+    F --> J
+    G --> J
+    H --> J
+    I --> J
+    
+    J --> K
+    K --> L
+    L --> M
+    M --> N
+    
+    N --> O
+    O --> P
+    P --> Q
+    
+    L --> R
+    M --> S
+    Q --> T
+    P --> U
+    
+    R --> V
+    S --> W
+    T --> X
+    U --> Y
+    
+    style J fill:#ff5722,color:#fff
+    style O fill:#ff9800,color:#fff
+    style R fill:#4caf50,color:#fff
+```
+
 ## 🏗️ Technology Architecture
 
 ```mermaid
@@ -394,19 +534,32 @@ graph TB
 ## 📊 Market Impact Analysis
 
 ```mermaid
-quadrantChart
-    title Market Impact Assessment
-    x-axis Low Impact --> High Impact
-    y-axis Low Effort --> High Effort
+graph TB
+    subgraph "High Impact - Low Effort"
+        A[Price Transparency]
+        B[DPI Integration]
+    end
     
-    Liquidity Enhancement: [0.9, 0.7]
-    Retail Access: [0.85, 0.6]
-    Settlement Efficiency: [0.8, 0.8]
-    Price Transparency: [0.75, 0.4]
-    Regulatory Compliance: [0.7, 0.9]
-    Cross-border Trading: [0.6, 0.85]
-    AI-driven Insights: [0.65, 0.75]
-    DPI Integration: [0.8, 0.5]
+    subgraph "High Impact - High Effort"
+        C[Liquidity Enhancement]
+        D[Retail Access]
+        E[Settlement Efficiency]
+        F[Cross-border Trading]
+        G[AI-driven Insights]
+    end
+    
+    subgraph "Medium Impact - High Effort"
+        H[Regulatory Compliance]
+    end
+    
+    style A fill:#4caf50,color:#fff
+    style B fill:#4caf50,color:#fff
+    style C fill:#2196f3,color:#fff
+    style D fill:#2196f3,color:#fff
+    style E fill:#2196f3,color:#fff
+    style F fill:#ff9800,color:#fff
+    style G fill:#ff9800,color:#fff
+    style H fill:#ff5722,color:#fff
 ```
 
 ```mermaid
@@ -855,35 +1008,50 @@ erDiagram
 ## 🥇 Competitive Advantage Analysis
 
 ```mermaid
-radar
-    title FractionFi vs Traditional Platforms
-    "DPI Integration" 100
-    "Blockchain Technology" 95
-    "AI/ML Capabilities" 90
-    "Regulatory Compliance" 85
-    "User Experience" 88
-    "Settlement Speed" 95
-    "Market Liquidity" 80
-    "Security Framework" 92
+graph TB
+    A[FractionFi Platform] --> B[DPI Integration: 100%]
+    A --> C[Blockchain Technology: 95%]
+    A --> D[AI/ML Capabilities: 90%]
+    A --> E[Settlement Speed: 95%]
+    A --> F[Security Framework: 92%]
+    A --> G[User Experience: 88%]
+    A --> H[Regulatory Compliance: 85%]
+    A --> I[Market Liquidity: 80%]
+    
+    style B fill:#4caf50,color:#fff
+    style C fill:#4caf50,color:#fff
+    style D fill:#2196f3,color:#fff
+    style E fill:#4caf50,color:#fff
+    style F fill:#ff9800,color:#fff
+    style G fill:#2196f3,color:#fff
+    style H fill:#ff9800,color:#fff
+    style I fill:#ff5722,color:#fff
 ```
 
 ## 📊 Financial Projections
 
 ```mermaid
-xychart-beta
-    title "Revenue Growth Projection (₹ Crores)"
-    x-axis [Year 1, Year 2, Year 3, Year 4, Year 5]
-    y-axis "Revenue" 0 --> 1000
-    bar [10, 50, 250, 500, 1000]
-    line [5, 35, 200, 450, 950]
-```
-
-```mermaid
-xychart-beta
-    title "User Growth Projection"
-    x-axis [Year 1, Year 2, Year 3, Year 4, Year 5]
-    y-axis "Users (Millions)" 0 --> 30
-    line [0.1, 1, 5, 15, 25]
+graph TB
+    subgraph "Revenue Growth (₹ Crores)"
+        A[Year 1: ₹10 Cr] --> B[Year 2: ₹50 Cr]
+        B --> C[Year 3: ₹250 Cr]
+        C --> D[Year 4: ₹500 Cr]
+        D --> E[Year 5: ₹1000 Cr]
+    end
+    
+    subgraph "User Growth (Millions)"
+        F[Year 1: 0.1M] --> G[Year 2: 1M]
+        G --> H[Year 3: 5M]
+        H --> I[Year 4: 15M]
+        I --> J[Year 5: 25M]
+    end
+    
+    style A fill:#e3f2fd
+    style C fill:#fff3e0
+    style E fill:#e8f5e8
+    style F fill:#f3e5f5
+    style H fill:#fff3e0
+    style J fill:#e8f5e8
 ```
 
 ## Deployment view (container/Kubernetes)
@@ -988,6 +1156,9 @@ sequenceDiagram
   BT-->>EL: Transfer event
   EL->>API: Update holdings, mark trade settled
   API-->>Buyer: WS: portfolio updated
+  API-->>Seller: WS: portfolio updated
+```
+
 ## 🎯 Key Performance Indicators (KPIs)
 
 ```mermaid
