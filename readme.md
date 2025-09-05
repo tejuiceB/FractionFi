@@ -797,6 +797,8 @@ sequenceDiagram
   ETH-->>EL: Transfer event
   EL->>DB: Mark tx confirmed, update holdings
   API-->>FE: WS broadcast orderbook/trade/portfolio updates
+```
+
 ### SEBI Mandate Alignment (List Fallback)
 
 **Investor Protection**: Automated KYC via DPI; AI-powered Risk Assessment; Real-time Fraud Detection; Transparent Audit Trails; Grievance Redressal System.
