@@ -1090,43 +1090,6 @@ sequenceDiagram
   API-->>Buyer: WS: portfolio updated
   API-->>Seller: WS: portfolio updated
 ```
-
-## 🎯 Key Performance Indicators (KPIs)
-
-```mermaid
-graph LR
-    subgraph "User Metrics"
-        A[Monthly Active Users]
-        B[User Retention Rate]
-        C[Average Transaction Value]
-    end
-    
-    subgraph "Market Metrics"
-        D[Total Trading Volume]
-        E[Market Liquidity Ratio]
-        F[Price Discovery Efficiency]
-    end
-    
-    subgraph "Technical Metrics"
-        G[System Uptime 99.9%]
-        H[Transaction Latency <100ms]
-        I[Security Incidents: 0]
-    end
-    
-    subgraph "Business Metrics"
-        J[Revenue Growth Rate]
-        K[Customer Acquisition Cost]
-        L[Lifetime Value]
-    end
-    
-    A --> D
-    B --> E
-    C --> F
-    D --> J
-    E --> K
-    F --> L
-```
-
 ## 🚀 Call to Action
 
 ### Call to Action (Linear Steps)
