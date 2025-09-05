@@ -1348,5 +1348,45 @@ Use concise `alt` text: e.g., `alt="Order book depth view"` so screen readers co
 
 ---
 
+## 📑 Diagram Explanations
+Below each visual concept is explained in plain language so readers can map the symbols to system behavior.
+
+1. Problem Statement Mindmap: Clusters core frictions in bond markets (liquidity, access, settlement inefficiencies, information gaps) to justify the platform scope.
+2. User Onboarding & KYC Flow: Shows progressive identity + risk verification with fallback (manual upload) and branching risk outcomes feeding approval.
+3. Bond Tokenization Flow: Depicts transformation from issuance/legal approval to minting fractional tokens, creating liquidity pools, and life‑cycle events (coupon → maturity → burn).
+4. Trading Workflow: Order validation → balance checks → queuing or matching → settlement path (on/off‑chain) → notification + portfolio refresh.
+5. AI/ML Processing Flow: Data ingestion sources feed feature engineering and multiple model families (pricing, risk, fraud, recommendations) whose outputs trigger real‑time platform actions.
+6. Solution Overview: Compresses value chain from traditional bonds to tokenization, liquidity enhancement, AI optimization, and DPI‑enabled inclusivity.
+7. Portfolio Management Flow: Periodic + event‑driven loop recalculating valuations, feeding UI components and enabling user actions (rebalance, alerts, reporting).
+8. Error Handling & Recovery Flow: Categorizes error types and the remediation patterns (retry/backoff, failover, rollback, circuit breaker, incident response).
+9. Compliance & Audit Flow: Every action is enriched, rule‑checked, optionally escalated (alerts / STR), and archived for dashboards & reporting.
+10. WebSocket Real-time Communication Flow: Event fan‑out path from data sources through queue, filtering, transformation, rate limiting to subscribed clients.
+11. Data Processing Pipeline Flow: End‑to‑end movement of heterogeneous external feeds through ingestion, stream processing, AI inference, multi‑store persistence, and outbound channels.
+12. Technology Architecture: Layered macro view linking frontend, API gateway, core services, AI layer, data stores, blockchain layer, and DPI integrations.
+13. Market Impact Analysis (Impact/Effort Blocks): Strategic prioritization matrix to sequence initiatives balancing ROI and complexity.
+14. High-Level Architecture (User→Edge→Backend): Holistic domain layout including monitoring, security modules, and blockchain interaction pathways.
+15. Market Impact Assessment Quadrant Chart: Quantifies relative impact vs effort for specific growth and compliance levers.
+16. Cybersecurity Framework: Defense‑in‑depth domains (IAM, data protection, application, infrastructure, monitoring) and interdependencies.
+17. Scalability Roadmap Timeline: Phased scale targets (users, TPS, feature breadth) guiding capacity planning.
+18. SEBI Mandate Alignment Mindmap: Maps regulatory pillars (protection, market development, supervision) to platform features.
+19. Development Timeline Gantt: Sequenced execution plan across MVP, Beta, Launch phases to manage dependencies.
+20. Revenue Distribution Pie: Targeted proportion of monetization streams for year three maturity.
+21. User Acquisition Journey: Customer funnel stages from awareness to retention, highlighting engagement intensity.
+22. End‑to‑End Order Lifecycle Sequence: Message exchange illustrating atomicity from order submission to on‑chain confirmation + broadcast.
+23. Order Matching & Settlement Logic Flow: Decision branches for partial fills and divergent settlement paths with eventual consistency.
+24. Smart Contracts & On‑Chain Interactions: Interaction triangle (API, contracts, event listener) around token operations and custody.
+25. Database ER Diagram: Normalized entity relationships controlling referential integrity and traceable trade lineage.
+26. Competitive Advantage Analysis: Visual self‑assessment of capability maturity vs differentiators.
+27. Financial Projections: Parallel revenue and user base growth trajectories signaling scaling assumptions.
+28. Deployment View (Kubernetes): Container/runtime segmentation for web, API, workers, persistence, observability, and blockchain endpoints.
+29. Security Architecture (Auth Focus): JWT + RBAC + secret management + audit trail integration path.
+30. Blockchain Settlement Sequence (DvP Demo): Delivery‑versus‑Payment simplified handshake ensuring token transfer aligns with trade execution.
+31. KPIs Graph: Metric taxonomy linking user, market, technical, and business indicators.
+32. Call to Action Flowchart: Strategic progression from demo readiness to market leadership.
+
+> Tip: Use this list when presenting—reference the diagram number to orient stakeholders quickly.
+
+---
+
 ## ✅ How to Use This Documentation
 Start with Problem Statement → Architecture diagrams → This Detailed Overview → Screenshots (visual context) → Roadmap / KPIs for strategic narrative. This layering lets an investor, regulator, or engineer each extract the level of depth they need without code digestion.
