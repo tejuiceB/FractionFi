@@ -1231,3 +1231,122 @@ flowchart LR
 *"Democratizing bond markets through blockchain innovation and Digital Public Infrastructure"*
 
 **Built with ❤️ for India's financial inclusion mission**
+
+---
+
+## 📘 Detailed Technical Overview
+
+This section provides a cohesive narrative (non-code) that ties together the architectural diagrams above and explains how FractionFi operates end‑to‑end.
+
+### 1. Core Value Proposition
+FractionFi converts traditional bond instruments into fractional, transferable digital representations and provides a unified venue where retail and institutional participants can trade them with improved liquidity, transparency, and eventual instant (or near‑instant) settlement. It bridges: (a) traditional fixed‑income issuance + compliance, (b) high‑performance off‑chain order management and matching, and (c) optional on‑chain settlement + digital custody.
+
+### 2. Layered Architecture Summary
+- Frontend Experience (Next.js 15 + TypeScript): Dynamic dashboards, order entry, portfolio visualization, WebSocket-driven real‑time updates, optional wallet connection for on‑chain flows.
+- API & Orchestration (FastAPI): REST + WebSocket gateway handling auth (JWT), validation, order lifecycle, KYC orchestration, event broadcasting, and integration points (blockchain, DPI sources such as DigiLocker / Account Aggregator APIs).
+- Matching & Trade Lifecycle: A price–time priority engine processes OPEN orders, creates TRADES, updates partial fills, and triggers settlement logic (off‑chain or on‑chain). Future enhancements include AI‑assisted order routing and liquidity provisioning.
+- Data & State: PostgreSQL stores normalized core entities (Users, Bonds, Orders, Trades, Holdings, Transactions, Audit Logs). Redis (future optimization) handles ephemeral order book snapshots, pub/sub fan‑out, and caching hot lookups.
+- Blockchain Layer (Hardhat / Ethereum): Optional settlement via token contracts (e.g., ERC‑20 or ERC‑1400 style). Smart contracts mint fractional bond tokens and record transfers for provenance. Event listeners reconcile on‑chain transfers with off‑chain state (double‑entry control + finality confirmation).
+- DPI & Compliance Integrations: KYC, identity, and financial data rails plug into onboarding flow (DigiLocker docs, Account Aggregator statements, UPI payment rails for fiat on/off ramps). Compliance engines feed audit and surveillance modules.
+- AI / ML Extensions: (Planned) pricing signals, risk scoring, anomaly/fraud detection, personalized investment recommendations; integrated through an inference gateway to keep the trading path deterministic and low latency.
+
+### 3. End‑to‑End Order Path (Narrative)
+1. User authenticates → receives JWT.
+2. User submits an order (BUY/SELL) via REST.
+3. API layer validates KYC status, role, balance (or reserved tokens) and persists the order as OPEN.
+4. Matching engine wakes (poll or event trigger) and scans for crossing orders; if match found, it forms one or more trade executions.
+5. For off‑chain settlement: holdings table is updated atomically and WebSocket broadcasts order + trade deltas.
+6. For on‑chain settlement: engine (or async worker) calls token contract (transfer / mint / burn); a pending transaction record is stored with tx_hash.
+7. Event listener confirms blockchain finality → updates transaction + trade status → broadcasts confirmation → portfolio recalculates.
+
+### 4. Data Integrity & Auditability
+Every material action (order creation, trade execution, settlement confirmation, KYC decision) emits an audit log entry. Separation of concerns between business tables and append‑only audit logs allows forensic replay. Planned deterministic hash chaining (a lightweight ledger) can further harden tamper detection.
+
+### 5. Real‑Time Distribution Strategy
+WebSockets push incremental updates (rather than full snapshots) for: order book, trades, portfolio changes. A subscription router can filter events per user or instrument group, enabling horizontal scale with sharded connection pools and a future message bus (Kafka / NATS) behind the dispatcher.
+
+### 6. Security & Compliance Posture
+- Authentication: JWT (short‑lived) + refresh token pattern (planned) + optional wallet signature login.
+- Authorization: Role and (future) attribute-based policy hooks (admin / issuer / investor).
+- Data Protection: PII separated from trading data; encryption at rest for sensitive columns; transport via TLS.
+- Compliance: Rule engine to flag anomalous volumes / wash trading patterns; automated SAR/STR pipeline.
+
+### 7. Scalability Roadmap (Practical Steps)
+Phase 1: Single Postgres instance + in‑process matcher.
+Phase 2: Background workers + Redis pub/sub + partial order book in memory.
+Phase 3: External matching microservice + CQRS split (read replicas) + multi‑region WebSocket fan‑out.
+Phase 4: Hybrid settlement (layer‑2 + mainnet) + cross‑venue routing + liquidity mining incentives.
+
+### 8. Extensibility Points
+- Adapter interfaces for: settlement backends (on‑chain vs custodial), pricing oracles, KYC providers.
+- Event hooks for: trade executed, order canceled, user verified → enabling plugin modules (rewards, analytics, notifications).
+- ABI/contract address registry for supporting multiple bond token classes or tranches.
+
+### 9. Future Enhancements (Concrete)
+- Proper Alembic migrations for tx_hash columns (remove ad‑hoc SQL script).
+- Robust background scheduler for coupon accrual & distribution.
+- Portfolio performance analytics (time‑weighted returns, yield to maturity aggregation).
+- Multi‑asset expansion (commercial paper, securitized receivables, green bonds).
+- RegTech API for automated regulatory filings (SEBI sandbox integration).
+
+### 10. Why Hybrid (Off‑Chain + On‑Chain) Matters
+Full on‑chain order books can face latency, MEV exposure, and gas cost friction. FractionFi leverages off‑chain deterministic matching for low latency, then anchors final settlement or ownership proofs on‑chain—balancing performance with transparency. This hybrid approach also facilitates compliance controls (pre‑trade KYC / AML gates) before state is externalized to public chains.
+
+---
+
+## 🖼️ Screenshots
+
+Below are placeholder references to UI screenshots. Place your PNG/JPG files in `frontend/public/screenshot/` (create the folder if it does not yet exist). Once added, GitHub / a deployed static host will serve them under `/screenshot/<filename>`.
+
+| Feature | Screenshot | Description |
+|---------|------------|-------------|
+| Dashboard | ![Dashboard](frontend/public/screenshot/dashboard.png) | Overview: portfolio summary, recent trades, market movers. |
+| Order Book | ![Order Book](frontend/public/screenshot/orderbook.png) | Live bid/ask levels streaming via WebSocket. |
+| Trade Ticket | ![Trade Ticket](frontend/public/screenshot/trade_ticket.png) | Order entry form with validation & wallet status. |
+| Portfolio Detail | ![Portfolio](frontend/public/screenshot/portfolio.png) | Holdings breakdown, cost basis, unrealized P/L. |
+| Bond Detail | ![Bond Detail](frontend/public/screenshot/bond_detail.png) | Instrument metadata (coupon, maturity, yield curve context). |
+| KYC Flow | ![KYC Flow](frontend/public/screenshot/kyc_flow.png) | Stepwise onboarding with DPI provider integration. |
+| On‑Chain Tx Confirmation | ![Tx Confirmation](frontend/public/screenshot/tx_confirmation.png) | Display of transaction hash & settlement status. |
+
+> If filenames differ, adjust the table accordingly. For remote hosting (e.g., a deployed Next.js site), strip the `frontend/public` prefix and use `/screenshot/<file>` paths.
+
+### Adding Screenshots Quickly
+1. Create the directory: `frontend/public/screenshot/`
+2. Drop images (PNG/JPEG/SVG). Keep lowercase, hyphenated names.
+3. Commit them: `git add frontend/public/screenshot/*`.
+4. Verify in dev: start frontend → open `http://localhost:3000/screenshot/dashboard.png`.
+
+### Accessibility Notes
+Use concise `alt` text: e.g., `alt="Order book depth view"` so screen readers convey meaning.
+
+---
+
+## 🔍 Quick FAQ
+**Is everything already on‑chain?** Not yet—current prototype focuses on off‑chain order + matching with a path to optional settlement contracts.
+
+**How are partial fills handled?** The remaining quantity stays OPEN; fills produce trade rows until quantity is exhausted, then status becomes FILLED.
+
+**What prevents double‑spending of tokens?** Off‑chain reserved balance (or locked custody) precedes contract invocation; on‑chain event confirmation reconciles final holdings.
+
+**Can this support corporate bonds or green bonds?** Yes—extend the `Bonds` metadata schema with classification fields and integrate issuer workflows.
+
+**How is price transparency improved?** Aggregated order book + trade tape + (future) AI fair value estimates surfaced in real time.
+
+---
+
+## 🗂️ Documentation Status Tracker (Current Snapshot)
+| Domain | Status | Next Step |
+|--------|--------|-----------|
+| Schema / Migrations | Partial | Convert raw SQL to Alembic revision |
+| Matching Engine | MVP | Add stress tests + latency benchmarks |
+| WebSockets | Basic Broadcast | Add auth scopes & throttle |
+| Portfolio Analytics | Minimal | Implement yield & duration metrics |
+| Blockchain Settlement | Prototype | Expand to event-driven settlement queue |
+| DPI Integrations | Planned | Build sandbox adapters & mock data |
+| AI/ML Models | Planned | Define feature store + baseline models |
+| Security Hardening | In Progress | Add rate limiting + structured audit review |
+
+---
+
+## ✅ How to Use This Documentation
+Start with Problem Statement → Architecture diagrams → This Detailed Overview → Screenshots (visual context) → Roadmap / KPIs for strategic narrative. This layering lets an investor, regulator, or engineer each extract the level of depth they need without code digestion.
