@@ -6,26 +6,26 @@ FractionFi is a comprehensive tokenized bond trading platform that democratizes 
 
 ## 🎯 Problem Statement
 
-```mermaid
-mindmap
-  root((Bond Market Challenges))
-    Limited Liquidity
-      Poor secondary market depth
-      High bid-ask spreads
-      Market fragmentation
-    High Entry Barriers
-      ₹1L+ minimum investments
-      Complex paperwork
-      Limited retail access
-    Inefficient Settlement
-      T+2 settlement cycles
-      Counterparty risk
-      Manual processes
-    Information Asymmetry
-      Limited price transparency
-      Fragmented data sources
-      Delayed market information
-```
+> Mermaid mindmap sometimes fails in older renderers. Plain list fallback below.
+
+**Bond Market Challenges**
+
+- Limited Liquidity
+  - Poor secondary market depth
+  - High bid-ask spreads
+  - Market fragmentation
+- High Entry Barriers
+  - ₹1L+ minimum investments
+  - Complex paperwork
+  - Limited retail access
+- Inefficient Settlement
+  - T+2 settlement cycles
+  - Counterparty risk
+  - Manual processes
+- Information Asymmetry
+  - Limited price transparency
+  - Fragmented data sources
+  - Delayed market information
 
 ## � Platform Flow Diagrams
 
@@ -533,34 +533,11 @@ graph TB
 
 ## 📊 Market Impact Analysis
 
-```mermaid
-graph TB
-    subgraph "High Impact - Low Effort"
-        A[Price Transparency]
-        B[DPI Integration]
-    end
-    
-    subgraph "High Impact - High Effort"
-        C[Liquidity Enhancement]
-        D[Retail Access]
-        E[Settlement Efficiency]
-        F[Cross-border Trading]
-        G[AI-driven Insights]
-    end
-    
-    subgraph "Medium Impact - High Effort"
-        H[Regulatory Compliance]
-    end
-    
-    style A fill:#4caf50,color:#fff
-    style B fill:#4caf50,color:#fff
-    style C fill:#2196f3,color:#fff
-    style D fill:#2196f3,color:#fff
-    style E fill:#2196f3,color:#fff
-    style F fill:#ff9800,color:#fff
-    style G fill:#ff9800,color:#fff
-    style H fill:#ff5722,color:#fff
-```
+| Impact / Effort | Items |
+|-----------------|-------|
+| High Impact / Low Effort | Price Transparency, DPI Integration |
+| High Impact / High Effort | Liquidity Enhancement, Retail Access, Settlement Efficiency, Cross-border Trading, AI-driven Insights |
+| Medium Impact / High Effort | Regulatory Compliance |
 
 ```mermaid
 flowchart TB
@@ -642,21 +619,18 @@ flowchart TB
 
 ## 📊 Market Impact Analysis
 
-```mermaid
-quadrantChart
-    title Market Impact Assessment
-    x-axis Low Impact --> High Impact
-    y-axis Low Effort --> High Effort
-    
-    Liquidity Enhancement: [0.9, 0.7]
-    Retail Access: [0.85, 0.6]
-    Settlement Efficiency: [0.8, 0.8]
-    Price Transparency: [0.75, 0.4]
-    Regulatory Compliance: [0.7, 0.9]
-    Cross-border Trading: [0.6, 0.85]
-    AI-driven Insights: [0.65, 0.75]
-    DPI Integration: [0.8, 0.5]
-```
+> Quadrant chart fallback (approximate coordinates):
+
+| Initiative | Impact (0-1) | Effort (0-1) | Notes |
+|------------|--------------|--------------|-------|
+| Liquidity Enhancement | 0.90 | 0.70 | Core engine + market makers |
+| Retail Access | 0.85 | 0.60 | UX + fractional compliance |
+| Settlement Efficiency | 0.80 | 0.80 | Hybrid + on-chain ops |
+| Price Transparency | 0.75 | 0.40 | Data surfacing quicker |
+| Regulatory Compliance | 0.70 | 0.90 | Heavy controls & reporting |
+| Cross-border Trading | 0.60 | 0.85 | FX + jurisdictional layers |
+| AI-driven Insights | 0.65 | 0.75 | Data + models infra |
+| DPI Integration | 0.80 | 0.50 | Leverages national rails |
 
 ## 🔐 Cybersecurity Framework
 
@@ -709,33 +683,14 @@ graph TD
 
 ## 📈 Scalability Architecture
 
-```mermaid
-timeline
-    title Platform Scalability Roadmap
-    
-    Phase 1 (MVP) : 10K Users
-                   : 1K TPS
-                   : Government Bonds Only
-                   : Basic KYC
-    
-    Phase 2 (Growth) : 1M Users
-                      : 10K TPS
-                      : Corporate Bonds
-                      : AI Features
-                      : DPI Integration
-    
-    Phase 3 (Scale) : 10M Users
-                     : 100K TPS
-                     : Multi-Asset Support
-                     : Cross-border Trading
-                     : Advanced Analytics
-    
-    Phase 4 (Enterprise) : 100M Users
-                          : 1M TPS
-                          : Global Expansion
-                          : Institutional Features
-                          : Full Automation
-```
+### Scalability Roadmap (Fallback Table)
+
+| Phase | Target Users | Approx TPS | Scope Expansion |
+|-------|--------------|------------|-----------------|
+| MVP | 10K | 1K | Govt bonds, basic KYC |
+| Growth | 1M | 10K | Corporate bonds, AI features, DPI integration |
+| Scale | 10M | 100K | Multi-asset, cross-border, advanced analytics |
+| Enterprise | 100M | 1M | Global, institutional suite, automation |
 
 ## 🏛️ SEBI Alignment Framework
 
@@ -764,66 +719,56 @@ mindmap
 
 ## 🚀 Implementation Roadmap
 
-```mermaid
-gantt
-    title FractionFi Development Timeline
-    dateFormat  YYYY-MM-DD
-    section Phase 1 (MVP)
-    Smart Contract Development    :2025-08-15, 30d
-    Backend API Development       :2025-08-20, 45d
-    Frontend Development          :2025-09-01, 30d
-    Testing & Security Audit      :2025-09-15, 15d
-    SEBI Sandbox Application      :2025-10-01, 30d
-    
-    section Phase 2 (Beta)
-    DPI Integration              :2025-11-01, 30d
-    AI/ML Model Development      :2025-11-15, 45d
-    User Testing                 :2025-12-01, 30d
-    Regulatory Approval          :2025-12-15, 60d
-    
-    section Phase 3 (Launch)
-    Production Deployment        :2026-02-15, 15d
-    Marketing & Partnerships     :2026-03-01, 60d
-    Scale Operations             :2026-04-01, 90d
-```
+### Development Timeline (Fallback Table)
+
+| Phase | Task | Start | Duration |
+|-------|------|-------|----------|
+| 1 (MVP) | Smart Contract Development | 2025-08-15 | 30d |
+| 1 (MVP) | Backend API Development | 2025-08-20 | 45d |
+| 1 (MVP) | Frontend Development | 2025-09-01 | 30d |
+| 1 (MVP) | Testing & Security Audit | 2025-09-15 | 15d |
+| 1 (MVP) | SEBI Sandbox Application | 2025-10-01 | 30d |
+| 2 (Beta) | DPI Integration | 2025-11-01 | 30d |
+| 2 (Beta) | AI/ML Model Development | 2025-11-15 | 45d |
+| 2 (Beta) | User Testing | 2025-12-01 | 30d |
+| 2 (Beta) | Regulatory Approval | 2025-12-15 | 60d |
+| 3 (Launch) | Production Deployment | 2026-02-15 | 15d |
+| 3 (Launch) | Marketing & Partnerships | 2026-03-01 | 60d |
+| 3 (Launch) | Scale Operations | 2026-04-01 | 90d |
 
 ## 💰 Business Model & Revenue Streams
 
-```mermaid
-pie title Revenue Distribution (Year 3)
-    "Transaction Fees (0.1%)" : 60
-    "Premium Analytics" : 20
-    "Market Data Licensing" : 10
-    "White-label Platform" : 7
-    "API Access Fees" : 3
-```
+### Revenue Distribution (Year 3)
+
+| Stream | % |
+|--------|---|
+| Transaction Fees (0.1%) | 60 |
+| Premium Analytics | 20 |
+| Market Data Licensing | 10 |
+| White-label Platform | 7 |
+| API Access Fees | 3 |
 
 ## 🌍 Market Penetration Strategy
 
-```mermaid
-journey
-    title User Acquisition Journey
-    section Awareness
-      Social Media: 3: User
-      Industry Events: 4: User
-      Partnership Marketing: 5: User
-    section Interest
-      Website Visit: 4: User
-      Demo Request: 5: User
-      Educational Content: 4: User
-    section Consideration
-      Free Trial: 5: User
-      Consultation: 4: User
-      Reference Checks: 3: User
-    section Purchase
-      Account Creation: 5: User
-      KYC Completion: 4: User
-      First Trade: 5: User
-    section Retention
-      Regular Trading: 5: User
-      Premium Features: 4: User
-      Referral Program: 5: User
-```
+### User Acquisition Journey (Fallback Table)
+
+| Stage | Touchpoint | Intensity (1–5) |
+|-------|------------|-----------------|
+| Awareness | Social Media | 3 |
+| Awareness | Industry Events | 4 |
+| Awareness | Partnership Marketing | 5 |
+| Interest | Website Visit | 4 |
+| Interest | Demo Request | 5 |
+| Interest | Educational Content | 4 |
+| Consideration | Free Trial | 5 |
+| Consideration | Consultation | 4 |
+| Consideration | Reference Checks | 3 |
+| Purchase | Account Creation | 5 |
+| Purchase | KYC Completion | 4 |
+| Purchase | First Trade | 5 |
+| Retention | Regular Trading | 5 |
+| Retention | Premium Features | 4 |
+| Retention | Referral Program | 5 |
 
 ## End‑to‑end order lifecycle (sequence)
 
@@ -852,28 +797,13 @@ sequenceDiagram
   ETH-->>EL: Transfer event
   EL->>DB: Mark tx confirmed, update holdings
   API-->>FE: WS broadcast orderbook/trade/portfolio updates
-```
+### SEBI Mandate Alignment (List Fallback)
 
+**Investor Protection**: Automated KYC via DPI; AI-powered Risk Assessment; Real-time Fraud Detection; Transparent Audit Trails; Grievance Redressal System.
 
-## Order matching and settlement logic (flow)
+**Market Development**: Enhanced Liquidity; Fractional Ownership; Price Discovery; Retail Participation; Innovation Catalyst.
 
-```mermaid
-flowchart TB
-  A[New Order] --> B{Validate<br/>JWT KYC balance}
-  B -- fail --> X[Reject 4xx]
-  B -- ok --> C[Insert into orders<br/>status open]
-  C --> D[Match engine picks order]
-  D --> E{Opposite orders exist?}
-  E -- no --> H[Wait in book]
-  E -- yes --> F[Create trades<br/>price-time priority]
-  F --> G{Settlement on-chain?}
-  G -- yes --> I[Call transfer transferFrom<br/>BondToken] --> J[Record tx_hash<br/>status pending]
-  G -- no --> K[Update off-chain holdings]
-  J --> L[Listen for event]
-  L --> M[Confirm update holdings]
-  K --> M
-  M --> N[Update orders<br/>filled cancelled]
-  N --> O[Notify via WebSocket]
+**Market Supervision**: Real-time Monitoring; Surveillance Dashboard; Regulatory Reporting; Compliance Automation; Risk Analytics.
 ```
 
 
@@ -1197,21 +1127,13 @@ graph LR
 
 ## 🚀 Call to Action
 
-```mermaid
-flowchart LR
-    A[🎯 Demo Ready] --> B[📋 SEBI Sandbox Application]
-    B --> C[🤝 Strategic Partnerships]
-    C --> D[💰 Series A Funding]
-    D --> E[🌟 Market Launch]
-    E --> F[🏆 Market Leadership]
-    
-    style A fill:#e1f5fe
-    style B fill:#f3e5f5
-    style C fill:#e8f5e8
-    style D fill:#fff3e0
-    style E fill:#fce4ec
-    style F fill:#e0f2f1
-```
+### Call to Action (Linear Steps)
+1. Demo Ready
+2. SEBI Sandbox Application
+3. Strategic Partnerships
+4. Series A Funding
+5. Market Launch
+6. Market Leadership
 
 ### Ready for Transformation
 - **Platform Status**: MVP ready for demonstration
@@ -1347,6 +1269,9 @@ Use concise `alt` text: e.g., `alt="Order book depth view"` so screen readers co
 | Security Hardening | In Progress | Add rate limiting + structured audit review |
 
 ---
+
+## 🛠️ Mermaid Compatibility Note
+Some Mermaid syntaxes (mindmap, journey, timeline, quadrantChart, gantt, pie in older renderers) may not render in certain Markdown viewers (older GitHub Enterprise, some IDE previews, or documentation portals). Fallback tables and lists have been provided for every non-core diagram above. If you upgrade the render engine to Mermaid >= 10.9+, you can restore the original fenced code blocks from version control history.
 
 ## 📑 Diagram Explanations
 Below each visual concept is explained in plain language so readers can map the symbols to system behavior.
